@@ -123,3 +123,45 @@ code {
   margin: auto 0;
   padding: 5px;
 }
+
+.searchBar{
+  border-radius: 50px;
+  display: flex;
+  margin: 0 10px;
+  justify-content: center;
+} 
+
+.searchBar .searchBox__input{
+  outline: none;
+  border: none;
+
+  background-color: #9a85ff;
+  color: #ffffff;
+  padding: 15px 20px;
+  width: 750px;
+  height: 20px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+::placeholder{
+  color: #fff;
+}
+
+::-webkit-input-placeholder{
+  color: #fff;
+}
+
+/* .searchBar{
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  transition: 0.4s liner;
+}
+
+.searchBar .searchBox__input  input[type="text"]{
+  border: none;
+  padding: 10px;
+  width: 500px;
+} */
