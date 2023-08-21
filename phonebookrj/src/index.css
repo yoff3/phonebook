@@ -42,3 +42,16 @@ code {
 .btn-add:active{
   background-color: #6af567;
 }
+
+.btn-save{
+  background-color: #4ddfe2;
+  color: white;
+}
+
+.btn-save:hover{
+  background-color: #44c6c8;
+}
+
+.btn-save:active{
+  background-color: #7beef0;
+}
