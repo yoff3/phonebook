@@ -17,6 +17,7 @@ code {
   min-height: 30px;
   border: none;
   padding: 5px;
+  border-radius: 5px;
 }
 
 .btn-back:hover{
@@ -27,4 +28,17 @@ code {
 .btn-back:active{
   background-color: #8c8b8a;
   color: #fff;
+}
+
+.btn-add{
+  background-color: #4fdf4b;
+  color: white;
+}
+
+.btn-add:hover{
+  background-color: #53cf51;
+}
+
+.btn-add:active{
+  background-color: #6af567;
 }
