@@ -195,6 +195,11 @@ code {
   padding: 10px 10px;
 }
 
+.contact-field:last-child{
+  margin-top: 30px;
+  justify-content: space-around;
+}
+
 .contact-avatar-zoomed{
   width: 280px;
   margin: 30px auto;
