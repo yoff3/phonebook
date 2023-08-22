@@ -1,5 +1,6 @@
 import { BackButton } from "./BackButton"
 import { SaveButton } from "./SaveButton"
+import { DeleteButton } from "./DeleteButton"
 import img from './images/man1.jpg'
 
 export function ContactForm(){
@@ -18,23 +19,20 @@ export function ContactForm(){
                     </div>
                     <div className="contact-fields">
                         <div className="contact-field">
-                            <label className="contact-label">Имя
-                                <input className="contact-input" type="text" id="fName" />
-                            </label>
+                            <label for="fName" className="contact-label">Имя</label>
+                            <input className="contact-input" type="text" id="fName" />
                         </div>
-                        <div>
-                            <label className="contact-label">Фамилия
-                                <input className="contact-input" type="text" id="lName" />
-                            </label>
+                        <div className="contact-field">
+                            <label for="lName" className="contact-label">Фамилия</label>
+                            <input className="contact-input" type="text" id="lName" />
                         </div>
-                        <div>
-                            <label className="contact-label">Номер телефона
-                                <input className="contact-input" type="text" id="phoneNumber" />
-                            </label>
+                        <div className="contact-field">
+                            <label for="phoneNumber" className="contact-label">Номер телефона</label>
+                            <input className="contact-input" type="text" id="phoneNumber" />
                         </div>
-                        <div>
+                        <div className="contact-field delete-contact">
                             <label className="contact-label">Удалить пользователя</label>
-                            <button type="submit">Удалить</button>
+                            <DeleteButton />
                         </div>
                     </div>
                 </form>

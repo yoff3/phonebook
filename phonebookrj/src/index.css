@@ -56,6 +56,19 @@ code {
   background-color: #7beef0;
 }
 
+.btn-delete{
+  background-color: #f63330;
+  color: #ffffff;
+}
+
+.btn-delete:hover{
+  background-color: #c62a28;
+}
+
+.btn-delete:active{
+  background-color: #f95b59;
+}
+
 .contacts{
   border: 1px solid black;
   width: 1200px;
@@ -173,7 +186,13 @@ code {
   flex-direction: column;
   flex-wrap: nowrap;
   width: 500px;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
+}
+
+.contact-field{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
 }
 
 .contact-avatar-zoomed{
@@ -222,6 +241,9 @@ code {
   color: #615f5d;
 }
 
+.delete-contact{
+  padding-bottom: 15px;
+}
 
 
 /* .searchBar{
