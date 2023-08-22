@@ -31,7 +31,7 @@ export function ContactForm(){
                             <input className="contact-input" type="text" id="phoneNumber" />
                         </div>
                         <div className="contact-field delete-contact">
-                            <label className="contact-label">Удалить пользователя</label>
+                            <label className="contact-label">Удалить контакт</label>
                             <DeleteButton />
                         </div>
                     </div>
