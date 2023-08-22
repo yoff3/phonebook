@@ -145,6 +145,11 @@ code {
   font-weight: 500;
 }
 
+.searchBar .searchBox__input:active,
+.searchBar .searchBox__input:focus{
+  background-color: #684fde;
+}
+
 ::placeholder{
   color: #fff;
 }
