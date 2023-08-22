@@ -158,6 +158,72 @@ code {
   color: #fff;
 }
 
+.contact-form{
+  height: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.contact-fields{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 500px;
+  border: 1px solid red;
+}
+
+.contact-avatar-zoomed{
+  width: 280px;
+  margin: 30px auto;
+}
+
+.contact-avatar-zoomed img{
+  margin: 0 auto;
+  width: 280px;
+  height: 200px;
+  background-color: #9a85ff;
+  background-size: cover;
+  background-position: center center;
+  color: #fff;
+}
+
+.contact-label{
+  display: inline-block;
+  padding: 15px 10px;
+  color: #615f5d;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.contact-input{
+  outline: none;
+  border: none;
+  background-color: #e8e3db;
+  padding: 15px 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #615f5d;
+  border-radius: 10px;
+  margin-left: 50px;
+}
+
+.contact-input:focus,
+.contact-input:active{
+  background-color: #615f5d;
+  color: #ffffff;
+}
+
+.contact-input::selection{
+  background-color: #fff;
+  color: #615f5d;
+}
+
+
+
 /* .searchBar{
   width: 100%;
   margin: 0;

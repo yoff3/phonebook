@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import { Contacts } from './Contacts';
+import { ContactForm } from './ContactForm';
 
 function App() {
   return (
-    <Contacts />
+    <ContactForm />
   );
 }
 
