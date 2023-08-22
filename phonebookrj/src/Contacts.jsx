@@ -6,6 +6,7 @@ import { useState } from "react";
 import img1 from './images/man1.jpg'
 import img2 from './images/man2.jpg'
 import img3 from './images/man3.jpg'
+import { DeleteButton } from "./DeleteButton";
 
 export function Contacts(){
     const [contactFirstName, setContactFirstName] = useState("")
@@ -15,7 +16,7 @@ export function Contacts(){
 
     function addContact(e){
         e.preventDefault();
-        
+
         setContact((current) =>{
             return (
                 [...current, {id: crypto.randomUUID(), firstName: contactFirstName,
@@ -26,6 +27,12 @@ export function Contacts(){
         setContactFirstName("")
         setContactLastName("")
         setContactPhoneNumber("")
+    }
+
+    function deleteContact(id){
+        setContact((currentContact)=>{
+            return currentContact.filter((contact => contact.id !== id))
+        })
     }
 
     return (
@@ -48,7 +55,11 @@ export function Contacts(){
                                     </div>
                                     <div>{contact.firstName}</div>
                                     <div>{contact.lastName}</div>
+                                    <div className="btn delete-btn">
+                                        <DeleteButton deleteOnClick={deleteContact} deletedContact={contact}/>
+                                    </div>
                                 </div>
+                                
                             </li>
                         )
                     })}

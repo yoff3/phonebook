@@ -1,8 +1,8 @@
 import {FaTrashAlt} from "react-icons/fa"
 
-export function DeleteButton(){
+export function DeleteButton({ deleteOnClick, deletedContact }){
     return (
-        <button className="btn btn-delete">
+        <button onClick={() => deleteOnClick(deletedContact.id)} className="btn btn-delete">
             <div className="icon-delete"><FaTrashAlt/></div> Удалить
         </button>
     )
