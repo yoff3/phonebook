@@ -1,6 +1,7 @@
 import { BackButton } from "./BackButton";
 import { AddButton } from "./AddButton";
 import { SearchContact } from "./SearchContact";
+import { ContactForm } from "./ContactForm";
 import img1 from './images/man1.jpg'
 import img2 from './images/man2.jpg'
 import img3 from './images/man3.jpg'
@@ -50,6 +51,9 @@ return (
                 </li>
             </ul>
         </div>
+    </section>
+    <section>
+        <ContactForm/>
     </section>
     </>
 )
