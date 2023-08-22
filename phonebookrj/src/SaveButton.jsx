@@ -1,8 +1,8 @@
 import {FaSave} from "react-icons/fa"
 
-export function SaveButton(){
+export function SaveButton({saveContact}){
     return (
-        <button className="btn btn-save">
+        <button onClick={saveContact} className="btn btn-save">
             <div className="icon-save"><FaSave/></div> Сохранить
         </button>
     )

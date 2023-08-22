@@ -1,9 +1,12 @@
 import { BackButton } from "./BackButton"
 import { SaveButton } from "./SaveButton"
 import { DeleteButton } from "./DeleteButton"
+import { useState } from "react"
 import img from './images/man1.jpg'
 
-export function ContactForm(){
+export function ContactForm({ getFirstName, getLastName, getNumber, handleContact, contactFirstName, contactLastName, contactPhoneNumber }){
+    
+
     return (
         <>  
         <section className="contacts">
@@ -11,7 +14,7 @@ export function ContactForm(){
                 <div className="contacts-title">Контакты</div>
                 <nav className="contacts-nav">
                     <BackButton />
-                    <SaveButton />
+                    <SaveButton saveContact={handleContact} />
                 </nav>
                 <form className="contact-form">
                     <div className="contact-avatar-zoomed">
@@ -19,16 +22,31 @@ export function ContactForm(){
                     </div>
                     <div className="contact-fields">
                         <div className="contact-field">
-                            <label for="fName" className="contact-label">Имя</label>
-                            <input className="contact-input" type="text" id="fName" />
+                            <label htmlFor="fName" className="contact-label">Имя</label>
+                            <input 
+                                value={contactFirstName}
+                                onChange={e => getFirstName(e.target.value)} 
+                                className="contact-input" 
+                                type="text" 
+                                id="fName" />
                         </div>
                         <div className="contact-field">
-                            <label for="lName" className="contact-label">Фамилия</label>
-                            <input className="contact-input" type="text" id="lName" />
+                            <label htmlFor="lName" className="contact-label">Фамилия</label>
+                            <input 
+                                value={contactLastName}
+                                onChange={e => getLastName(e.target.value)} 
+                                className="contact-input" 
+                                type="text" 
+                                id="lName" />
                         </div>
                         <div className="contact-field">
-                            <label for="phoneNumber" className="contact-label">Номер телефона</label>
-                            <input className="contact-input" type="text" id="phoneNumber" />
+                            <label htmlFor="phoneNumber" className="contact-label">Номер телефона</label>
+                            <input 
+                                value={contactPhoneNumber}
+                                onChange={e => getNumber(e.target.value)} 
+                                className="contact-input" 
+                                type="text" 
+                                id="phoneNumber" />
                         </div>
                         <div className="contact-field delete-contact">
                             <label className="contact-label">Удалить контакт</label>
