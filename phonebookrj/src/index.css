@@ -111,8 +111,14 @@ code {
   vertical-align: middle;
   background-color: #eff2f2;
   display: flex;
+  justify-content: space-between;
+}
+
+.contact-info{
+  display: flex;
   justify-content: flex-start;
 }
+
 
 .contact:hover{
   background-color: #e3e3e3;
@@ -195,10 +201,10 @@ code {
   padding: 10px 10px;
 }
 
-.contact-field:last-child{
+/* .contact-field:last-child{
   margin-top: 30px;
   justify-content: space-around;
-}
+} */
 
 .contact-avatar-zoomed{
   width: 280px;

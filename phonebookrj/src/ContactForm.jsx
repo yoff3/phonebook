@@ -10,8 +10,8 @@ export function ContactForm({ getFirstName, getLastName, getNumber, handleContac
     return (
         <>  
         <section className="contacts">
-            <div className="container">
-                <div className="contacts-title">Контакты</div>
+            <div className="container"> 
+                <div className="contacts-title">Создать контакт</div>
                 <nav className="contacts-nav">
                     <BackButton />
                     <SaveButton saveContact={handleContact} />
@@ -48,10 +48,10 @@ export function ContactForm({ getFirstName, getLastName, getNumber, handleContac
                                 type="text" 
                                 id="phoneNumber" />
                         </div>
-                        <div className="contact-field delete-contact">
+                        {/* <div className="contact-field delete-contact">
                             <label className="contact-label">Удалить контакт</label>
                             <DeleteButton />
-                        </div>
+                        </div> */}
                     </div>
                 </form>
             </div>
