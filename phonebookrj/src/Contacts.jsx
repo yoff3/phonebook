@@ -1,4 +1,4 @@
-import { BackButton } from "./BackButton";
+import { ShowContactsButton } from "./ShowContactsButton";
 import { AddButton } from "./AddButton";
 import { SearchContact } from "./SearchContact";
 import { ContactForm } from "./ContactForm";
@@ -9,26 +9,59 @@ import img3 from './images/man3.jpg'
 import { DeleteButton } from "./DeleteButton";
 
 export function Contacts(){
+
     const [contactFirstName, setContactFirstName] = useState("")
     const [contactLastName, setContactLastName] = useState("")
-    const [contactPhoneNumber, setContactPhoneNumber] = useState("")    
-    const [contacts, setContact] = useState(() => {
+    const [contactPhoneNumber, setContactPhoneNumber] = useState("")   
+	const [allBook, setBook] = useState(() => {
         const localValue = localStorage.getItem("CONTACTS")
         if (localValue == null) return []
 
         return JSON.parse(localValue)
     })
 
+    const [contacts, setContact] = useState([])
 
     useEffect(() => {
-        localStorage.setItem("CONTACTS", JSON.stringify(contacts))
-    }, [contacts])
+        localStorage.setItem("CONTACTS", JSON.stringify(allBook))
+    }, [allBook])
+
+	const [searchInput, setSearchInput] = useState("")
+    
+    console.log(searchInput)
+    console.log(contacts) //массив контактов который мне надо отфильтровать
+    //searchContact(contacts)
+
+	function showContacts(){
+		setContact(() => allBook)
+	}
+
+	function searchContact(searchingWord){
+		setSearchInput(searchingWord) // отображает вводимые символы в поисковой строке
+		let value = searchingWord.toLowerCase()
+		
+		let filteredContacts = allBook.filter((contact) => {
+			const contactFullName = contact.firstName.toLowerCase() + " " + contact.lastName.toLowerCase()
+			console.log(contactFullName, value)
+			console.log(contactFullName.indexOf(value))
+			return contactFullName.indexOf(value) !== -1
+		})
+
+		setContact(filteredContacts)
+	}
 
 
     function addContact(e){
         e.preventDefault();
 
-        setContact((current) =>{
+        setBook((current) =>{
+            return (
+                [...current, {id: crypto.randomUUID(), firstName: contactFirstName,
+                    lastName: contactLastName, phoneNumber: contactPhoneNumber}]
+            )
+        })
+
+		setContact((current) =>{
             return (
                 [...current, {id: crypto.randomUUID(), firstName: contactFirstName,
                     lastName: contactLastName, phoneNumber: contactPhoneNumber}]
@@ -42,9 +75,14 @@ export function Contacts(){
 
 
     function deleteContact(id){
-        setContact((currentContact)=>{
+        setBook((currentContact)=>{
             return currentContact.filter((contact => contact.id !== id))
         })
+
+		setContact((currentContact)=>{
+            return currentContact.filter((contact => contact.id !== id))
+        })
+
     }
 
 
@@ -54,10 +92,10 @@ export function Contacts(){
             <div className="container">
                 <div className="contacts-title">Контакты</div>
                 <nav className="contacts-nav">
-                    <BackButton />
+                    <ShowContactsButton getContacts={showContacts}/>
                     <AddButton />
                 </nav>
-                <SearchContact />
+                <SearchContact contatsList={contacts} setSearch={searchContact} searchUserInput={searchInput} />
                 <ul className="contats-list">
                     {contacts.map(contact => {
                         return (

@@ -1,4 +1,4 @@
-import { BackButton } from "./BackButton"
+import { ShowContactsButton } from "./ShowContactsButton"
 import { SaveButton } from "./SaveButton"
 import { DeleteButton } from "./DeleteButton"
 import { useState } from "react"
@@ -13,7 +13,7 @@ export function ContactForm({ getFirstName, getLastName, getNumber, handleContac
             <div className="container"> 
                 <div className="contacts-title">Создать контакт</div>
                 <nav className="contacts-nav">
-                    <BackButton />
+                    <ShowContactsButton />
                     <SaveButton saveContact={handleContact} />
                 </nav>
                 <form className="contact-form">
