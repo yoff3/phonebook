@@ -20,12 +20,12 @@ code {
   border-radius: 5px;
 }
 
-.btn-back:hover{
+.btn-show:hover{
   background-color: #000000;
   color: #ffffff;
 }
 
-.btn-back:active{
+.btn-show:active{
   background-color: #8c8b8a;
   color: #fff;
 }
@@ -96,12 +96,14 @@ code {
   background-color: #27c9cb;
 }
 
-.contats-list{
+.contacts-list{
   margin: 30px 10px;
   padding: 0;
   min-height: 50px;
-  height: auto;
+  max-height: 500px;
   list-style-type: none;
+  overflow: auto;
+
 }
 
 .contact{
@@ -115,6 +117,8 @@ code {
 }
 
 .contact-info{
+  max-width: 800px;
+  width: 600px;
   display: flex;
   justify-content: flex-start;
 }

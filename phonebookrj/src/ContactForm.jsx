@@ -1,11 +1,8 @@
 import { ShowContactsButton } from "./ShowContactsButton"
 import { SaveButton } from "./SaveButton"
-import { DeleteButton } from "./DeleteButton"
-import { useState } from "react"
 import img from './images/man1.jpg'
 
 export function ContactForm({ getFirstName, getLastName, getNumber, handleContact, contactFirstName, contactLastName, contactPhoneNumber }){
-    
 
     return (
         <>  
@@ -48,10 +45,6 @@ export function ContactForm({ getFirstName, getLastName, getNumber, handleContac
                                 type="text" 
                                 id="phoneNumber" />
                         </div>
-                        {/* <div className="contact-field delete-contact">
-                            <label className="contact-label">Удалить контакт</label>
-                            <DeleteButton />
-                        </div> */}
                     </div>
                 </form>
             </div>

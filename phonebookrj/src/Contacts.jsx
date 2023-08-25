@@ -4,8 +4,6 @@ import { SearchContact } from "./SearchContact";
 import { ContactForm } from "./ContactForm";
 import { useEffect, useState } from "react";
 import img1 from './images/man1.jpg'
-import img2 from './images/man2.jpg'
-import img3 from './images/man3.jpg'
 import { DeleteButton } from "./DeleteButton";
 
 export function Contacts(){
@@ -13,7 +11,7 @@ export function Contacts(){
     const [contactFirstName, setContactFirstName] = useState("")
     const [contactLastName, setContactLastName] = useState("")
     const [contactPhoneNumber, setContactPhoneNumber] = useState("")   
-	const [allBook, setBook] = useState(() => {
+	const [contactsList, setcontactsList] = useState(() => {
         const localValue = localStorage.getItem("CONTACTS")
         if (localValue == null) return []
 
@@ -23,48 +21,69 @@ export function Contacts(){
     const [contacts, setContact] = useState([])
 
     useEffect(() => {
-        localStorage.setItem("CONTACTS", JSON.stringify(allBook))
-    }, [allBook])
+        localStorage.setItem("CONTACTS", JSON.stringify(contactsList))
+    }, [contactsList])
 
 	const [searchInput, setSearchInput] = useState("")
-    
-    console.log(searchInput)
-    console.log(contacts) //массив контактов который мне надо отфильтровать
-    //searchContact(contacts)
+ 
 
 	function showContacts(){
-		setContact(() => allBook)
+		setContact(() => contactsList)
 	}
 
+
 	function searchContact(searchingWord){
-		setSearchInput(searchingWord) // отображает вводимые символы в поисковой строке
+		setSearchInput(searchingWord) 
 		let value = searchingWord.toLowerCase()
 		
-		let filteredContacts = allBook.filter((contact) => {
+		let filteredContacts = contactsList.filter((contact) => {
 			const contactFullName = contact.firstName.toLowerCase() + " " + contact.lastName.toLowerCase()
-			console.log(contactFullName, value)
-			console.log(contactFullName.indexOf(value))
 			return contactFullName.indexOf(value) !== -1
 		})
 
 		setContact(filteredContacts)
 	}
 
+	function setEditFromFields(editingContact){
 
-    function addContact(e){
-        e.preventDefault();
+		console.log("hi im working fine")
+		console.log(editingContact)
+		console.log(editingContact.id, editingContact.firstName, editingContact.lastName)
 
-        setBook((current) =>{
+		setContactFirstName(editingContact.firstName)
+		setContactLastName(editingContact.lastName)
+		setContactPhoneNumber(editingContact.phoneNumber)
+
+		return <ContactForm  
+						getFirstName={setContactFirstName} 
+						getLastName={setContactLastName}
+						getNumber={setContactPhoneNumber}
+						contactFirstName={contactFirstName} 
+						contactLastName={contactLastName}
+						contactPhoneNumber={contactPhoneNumber}
+						handleContact={addContact}/>
+		
+	}
+
+
+    function addContact(){
+		if(!contactFirstName && !contactPhoneNumber && !contactLastName){
+			return
+		}
+		let correctedFirstName = contactFirstName[0].toLocaleUpperCase() + contactFirstName.slice(1).toLowerCase()
+		let correctedLastName = contactLastName[0].toLocaleUpperCase() + contactLastName.slice(1).toLowerCase()
+		
+		setcontactsList((current) =>{
             return (
-                [...current, {id: crypto.randomUUID(), firstName: contactFirstName,
-                    lastName: contactLastName, phoneNumber: contactPhoneNumber}]
+                [...current, {id: crypto.randomUUID(), firstName: correctedFirstName,
+                    lastName: correctedLastName, phoneNumber: contactPhoneNumber}]
             )
         })
 
 		setContact((current) =>{
             return (
-                [...current, {id: crypto.randomUUID(), firstName: contactFirstName,
-                    lastName: contactLastName, phoneNumber: contactPhoneNumber}]
+                [...current, {id: crypto.randomUUID(), firstName: correctedFirstName,
+                    lastName: correctedLastName, phoneNumber: contactPhoneNumber}]
             )
         })
 
@@ -75,7 +94,7 @@ export function Contacts(){
 
 
     function deleteContact(id){
-        setBook((currentContact)=>{
+        setcontactsList((currentContact)=>{
             return currentContact.filter((contact => contact.id !== id))
         })
 
@@ -96,12 +115,12 @@ export function Contacts(){
                     <AddButton />
                 </nav>
                 <SearchContact contatsList={contacts} setSearch={searchContact} searchUserInput={searchInput} />
-                <ul className="contats-list">
+                <ul className="contacts-list">
                     {contacts.map(contact => {
                         return (
-                            <li key={contact.id}>
-                                <div className="contact">
-                                    <div className="contact-info">
+                            <li key={contact.id} >
+                                <div className="contact" >
+                                    <div className="contact-info" onClick={() => setEditFromFields(contact)}>
                                         <div className="contact-avatar">
                                             <img src={img1} alt=""/>
                                         </div>
@@ -119,14 +138,15 @@ export function Contacts(){
                 </ul>
             </div>
         </section>
-        <ContactForm 
+        {<ContactForm 
             getFirstName={setContactFirstName} 
             getLastName={setContactLastName}
             getNumber={setContactPhoneNumber}
             contactFirstName={contactFirstName} 
             contactLastName={contactLastName}
             contactPhoneNumber={contactPhoneNumber}
-            handleContact={addContact}/>
+            handleContact={addContact}
+			/> }
         </>
     )
 
